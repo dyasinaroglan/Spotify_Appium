@@ -42,18 +42,22 @@ public class SpotifySearch extends Utils{
     }
 
     @Then("scroll screen and select song from list")
-    public void scrollScreenAndSelectSongFromList() {
-
+    public void scrollScreenAndSelectSongFromList() throws InterruptedException {
+        Thread.sleep(2000);
         Dimension dimension = Driver.getDriver().manage().window().getSize();
 
         int startX = (int) (dimension.width * 0.5);
-        int startY = (int) (dimension.height * 0.9);
+        int startY = (int) (dimension.height * 0.3);
         int finishX = (int) (dimension.width * 0.5);
-        int finishY = (int) (dimension.height * 0.1);
+        int finishY = (int) (dimension.height * 0.05);
 
         TouchAction touchAction = new TouchAction(Driver.getDriver());
         touchAction.press(PointOption.point(startX,startY))
                 .waitAction(WaitOptions.waitOptions(Duration.ofSeconds(2)))
                 .moveTo(PointOption.point(finishX,finishY)).release().perform();
+        Thread.sleep(2000);
+        Driver.getDriver().findElement(lSelectAlbum).click();
+        Thread.sleep(1000);
+        Driver.getDriver().findElement(lMixPlayButton).click();
     }
 }

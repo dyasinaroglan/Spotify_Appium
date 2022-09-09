@@ -13,4 +13,7 @@ public interface Locators {
     By lSearchButton = By.xpath("//android.widget.ImageView[@content-desc=\"Ara\"]");
     By lSearchText = By.id("com.spotify.music:id/find_search_field_text");
     By lSearchWrite = By.id("com.spotify.music:id/query");
+
+    By lSelectAlbum = By.xpath("//*[@index='1' and @resource-id='com.spotify.music:id/row_root']");
+    By lMixPlayButton = By.id("com.spotify.music:id/header_play_button");
 }

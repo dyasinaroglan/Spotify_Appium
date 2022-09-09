@@ -75,6 +75,8 @@ public class spotifydef {
     public void songIsPlayed() throws InterruptedException {
         sleep(1000);
         Driver.getDriver().findElement(lMusicSelect).click();
+        Thread.sleep(2000);
+
 
     }
 }

@@ -9,5 +9,5 @@ Feature: Spotify
 
     Scenario: play dong from the search box
       Given click the search button
-      When I enter "Under Cover" to search song
+      When I enter "Tarkan" to search song
       Then scroll screen and select song from list
