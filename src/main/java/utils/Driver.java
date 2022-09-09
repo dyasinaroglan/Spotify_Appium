@@ -12,8 +12,6 @@ public class Driver {
     private static AppiumDriver<MobileElement> driver;
     static AppiumDriverLocalService service;
 
-    public Driver() {
-    }
 
     public static void runAppium() {
 
@@ -31,13 +29,15 @@ public class Driver {
     private static DesiredCapabilities cap(Device device, App app) {
 
         DesiredCapabilities capabilities = new DesiredCapabilities();
-        capabilities.setCapability("appium:appPackage", app.appPackage);
-        capabilities.setCapability("appium:appActivity", app.appActivity);
+
         capabilities.setCapability("appium:udid", device.udid);
         capabilities.setCapability("appium:version", device.version);
         capabilities.setCapability("appium:deviceName", device.deviceName);
         capabilities.setCapability("appium:platformName", device.platformName);
         capabilities.setCapability("noReset", device.noReset);
+
+        capabilities.setCapability("appium:appPackage", app.appPackage);
+        capabilities.setCapability("appium:appActivity", app.appActivity);
 
         return capabilities;
 

@@ -1,27 +1,32 @@
 package tests;
 
+import io.appium.java_client.AppiumDriver;
+import io.appium.java_client.MobileDriver;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.TouchAction;
 import io.appium.java_client.touch.WaitOptions;
+import io.appium.java_client.touch.offset.ElementOption;
 import io.appium.java_client.touch.offset.PointOption;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.openqa.selenium.By;
 import org.openqa.selenium.Dimension;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.touch.TouchActions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import utils.App;
 import utils.Device;
 import utils.Driver;
 import utils.Utils;
 
 import java.time.Duration;
-import java.util.List;
 
 import static java.lang.Thread.sleep;
-import static locator.Locators.*;
+import static utils.Locators.*;
 
-public class spotifydef extends Driver{
-
+public class spotifydef {
 
     @Given("Application is opened")
     public void applicationIsOpened() {
@@ -34,6 +39,7 @@ public class spotifydef extends Driver{
         sleep(2000);
         Driver.getDriver().findElement(lTropicalButton).click();
     }
+
     @Then("click to enter the playlist")
     public void clickToEnterThePlaylist() throws InterruptedException {
         sleep(1000);
@@ -52,9 +58,17 @@ public class spotifydef extends Driver{
         int finishY = (int) (dimension.height * 0.05);
 
         TouchAction touch = new TouchAction(Driver.getDriver());
-        touch.press(PointOption.point(startX, startY))
-                .waitAction(WaitOptions.waitOptions(Duration.ofSeconds(2)))
-                .moveTo(PointOption.point(finishX, finishY)).release().perform();
+        for (int i = 0; i < 3; i++) {
+            touch.press(PointOption.point(startX, startY))
+                    .waitAction(WaitOptions.waitOptions(Duration.ofSeconds(2)))
+                    .moveTo(PointOption.point(finishX, finishY)).release().perform();
+        }
+/*       ---> Horizontol Scrolling
+        WebElement barButton = Driver.getDriver().findElement(By.xpath(""));
+        TouchAction touch = new TouchAction(Driver.getDriver());
+        touch.longPress(ElementOption.element(barButton)).moveTo(ElementOption.element(barButton,0,250)).release().perform();
+
+ */
     }
 
     @And("song is played")

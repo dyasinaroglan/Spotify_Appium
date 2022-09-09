@@ -6,3 +6,8 @@ Feature: Spotify
     Then click to enter the playlist
     Then scroll down the screen
     And song is played
+
+    Scenario: play dong from the search box
+      Given click the search button
+      When I enter "Under Cover" to search song
+      Then scroll screen and select song from list
